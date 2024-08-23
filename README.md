@@ -14,14 +14,15 @@ This is a Desktop & Android application with a simple UI. It generates custom pa
 
 ###  -Multiple Options for password generated
 
-![1](.\img\1.png)
+![.\img\1.png](https://github.com/besology512/password_generator/blob/main/img/1.png?raw=true)
 
 ### - Generating Multiple Passwords
 
-![1](.\img\2.png)
+![.\img\2.png](https://github.com/besology512/password_generator/blob/main/img/2.png?raw=true)
 
 
 
 ## - Rating Passwords
 
-![1](.\img\3.png)
+!![image](https://github.com/user-attachments/assets/f8f2befb-6e78-4e65-bcd5-494f49469d26)
+
