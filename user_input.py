@@ -1,11 +1,22 @@
 
-# this section will be taken from user
-exclude_ambsymbols = True
-symbols = True
-Numbers = True
-lower = True
-upper = True
+from cProfile import label
+
+
+exclude_ambsymbols = False
+symbols = False
+Numbers = False
+lower = False
+upper = False
 wspace = False
-Plength = 100
-print('main is working')
-input = 'dfasdnfsadmf6+45464vv3423532$Q#$#@$'
+Plength = 15
+multiple_passwords = False
+input_password = ''
+n_passwords = 1
+save = False
+label1 = ''
+label2 = ''
+label3 = ''
+label4 = ''
+label5 = ''
+label6 = ''
+label7 = ''

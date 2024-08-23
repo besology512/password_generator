@@ -1,0 +1,233 @@
+#:import Factory kivy.factory.Factory
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+        name: "second"
+<FirstWindow>:
+    name: "first"
+    MainBox:
+<SecondWindow>:
+    name: "second"
+    canvas.before:
+        Color: 
+            rgba: rgba("#1e1e2cff")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        rows: 5
+        Button:
+            text: "<--Back"
+            on_release: 
+                app.root.current = "first"
+                root.manager.transition.direction = "right"
+            size_hint: 1,0.05
+            background_color: rgba("#29283dff")
+        BoxLayout:
+            size_hint: 0.8,0.1
+            Label:
+                text: "Write Your Password"
+        PassField: 
+            size_hint: 1, 0.1
+            multiline: False
+            max: 100
+            id: writePass
+        GridLayout:
+            rows: 7
+            Label:
+                text: root.value1
+            Label:
+                text: root.value2
+            Label:
+                text: root.value3
+            Label:
+                text: root.value4
+            Label:
+                text: root.value5
+            Label:
+                text: root.value6
+            Label:
+                text: root.value7
+        RateButton:
+            text: "RATE"
+            color: rgba("#ffea7dff")
+            size_hint: 1.0, 0.1
+            on_release: root.rate()
+            background_color: rgba("#29283dff")
+
+<MainBox>:
+    canvas.before:
+        Color: 
+            rgba: rgba("#1e1e2cff")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MainGrid:
+<MainGrid>:
+    cols: 1
+    BoxLayout:
+        GridLayout:
+            rows: 9
+            BoxLayout:
+                size_hint: 1,0.3
+                Button:
+                    text: "write -->"
+                    on_release: 
+                        app.root.current = "second"
+                    background_color: rgba("#29283dff")
+
+            Upper:
+            Lower:
+            Digits:
+            Symbols:
+            Ambigous:
+            Space:
+            GridLayout:
+                cols: 2
+                Label:
+                    text: "multiple passwords"
+                CheckBox:
+                    on_active: root.multiple_passwords(self)
+            CharNumGrid:
+    CreateButtonBox:
+<TextInputGrid>:
+<CharNumGrid>:
+    cols: 2
+    Label:
+        text: root.my_value + " characters"
+    Slider:
+        min: 9
+        max: 100
+        value: 15
+        on_value: root.on_slider_value(self)
+<Lower>:
+    cols:2
+    Label:
+        text: "Include Lower Case"
+    CheckBox:
+        on_active: root.work_button(self)
+<Upper>:
+    cols: 2
+    Label:
+        text: "Include Upper Case"
+    CheckBox:
+        on_active: root.work_button(self)
+<Digits>:
+    cols: 2
+    Label:
+        text: "Include Numbers"
+    CheckBox:
+        on_active: root.work_button(self)
+<Symbols>:
+    cols: 2
+    Label:
+        text: "Include Symbols"
+    CheckBox:
+        on_active: root.work_button(self) #once clicked silde the next widget
+<Ambigous>:
+    cols: 2
+    Label:
+        text: "Exclude Ambigous Symbols"
+    CheckBox:
+        on_active: root.work_button(self)
+<Space>:
+    cols: 2
+    Label:
+        text: "Include White Space"
+    CheckBox:
+        on_active: root.work_button(self)
+<CreateButtonBox>:
+    size_hint: 0.1,0.2
+    orientation: "vertical"
+    GridLayout:
+        cols: 2
+        size_hint: 1.00, 0.08
+        Label:
+            text: root.final_password
+            size_hint: 0.8, 1.00
+            pos_hint: (0,1)
+            color: rgba("#24bfebff")
+        Button:
+            background_color: rgba("#29283dff")
+            text: "Copy Password"
+            size_hint: 0.2, 1.00
+            on_press: root.Copy()
+    Button:
+        size_hint: 1.0, 0.1
+        text: "Generate Password"
+        color: rgba("#ffea7dff")
+        on_press: root.call_get_password()
+        background_color: rgba("#29283dff")
+<badinput>:
+    auto_dismiss: True
+    title: "Wrong Input Value"
+    size_hint: 0.6, 0.2
+    pos_hint: {"center_x":0.5 , "center_y":0.5}
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "You didn't choose the characteristics of your password"
+            font_size: 18
+        Button:
+            text: "Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            background_color: rgba("#29283dff")
+<badinput2>:
+    auto_dismiss: True
+    title: "Type password first"
+    size_hint: 0.6, 0.2
+    pos_hint: {"center_x":0.5 , "center_y":0.5}
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Type Password First"
+            font_size: 18
+        Button:
+            text: "Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            background_color: rgba("#29283dff")
+<badinput3>
+    auto_dismiss: True
+    title: "Type password first"
+    size_hint: 0.6, 0.2
+    pos_hint: {"center_x":0.5 , "center_y":0.5}
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Choose More Options"
+            font_size: 18
+        Button:
+            text: "Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            background_color: rgba("#29283dff")
+<multiple_passwords>:
+    auto_dismiss: False
+    title: "Multiple passwords options"
+    size_hint: 0.6, 0.6
+    pos_hint: {"center_x":0.5 , "center_y":0.5}
+    GridLayout:
+        rows: 2
+        GridLayout:
+            cols:2
+            Label:
+                text: "Number of Passwords: " + root.my_value
+            Slider:
+                min: 2
+                max: 100
+                value: 2
+                on_value: root.on_slider_value(self)
+        GridLayout:
+            cols:2
+            Button:
+                text: "Save"
+                font_size: 24
+                on_release: root.save()
+                background_color: rgba("#29283dff")
+            Button:
+                text: "Close"
+                font_size: 24
+                on_release: root.close()
+                background_color: rgba("#29283dff")
